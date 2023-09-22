@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <a href="#" class="navbar-brand">MIXAMO STORE</a>
+
+
+    <button type="button" name="button" class="navbar-toggler navbar-toggler-right" data-target="#navb">
+        <span class="navbar-toggle-icon"></span>
+    </button>
+
+    <div id="navb" class="navbar-collapse collapse hide">
+        <ul class="nav navbar-nav ml-auto">
+            
+            {% if  user.is_authenticated %}
+             <li class="navbar-item">
+             <a href="{% url 'logout' %}" class="nav-link fas fa-sign-in-alt p-3">Logout</a>
+            </li>
+            {% else %}
+            <li class="navbar-item">
+                <a href="{% url 'login' %}" class="nav-link fas fa-user p-3">Login</a>
+                <!-- <span class="fas fa-user"></span> -->
+            </li>
+
+            <li class="navbar-item">
+                <a href="{% url 'register' %}" class="nav-link fas fa-user-plus p-3">Registro</a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
