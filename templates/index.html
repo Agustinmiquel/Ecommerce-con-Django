@@ -2,14 +2,24 @@
 
 {% block content %}
 
-<h1>Hola mundo desde el html</h1><br>
+<div class="col">
+<h1>Bienvenidos a la casa de las maquinas para Coser</h1><br>
 
 <p>
 {{message}}
 </p>
 
-{% endblock %}
+<ul class="list-group">
+    {% for product in products %}
+        <li class="list-group-item">
+            {{ product.title }}
 
+            <span class="text-success">${{product.price}}</span>
+        </li>
+</ul>
+    {% endfor %}
+{% endblock %}
+</div>
 {% load static %}
 
 
