@@ -3,23 +3,33 @@
 {% block content %}
 
 <div class="col">
-<h1>Bienvenidos a la casa de las maquinas para Coser</h1><br>
+    <h1 class="text-center">Bienvenidos a la casa de las maquinas para Coser</h1><br>
 
-<p>
-{{message}}
-</p>
+    {% include 'snippets/search.html' %}
 
-<ul class="list-group">
+    <h4 class="text-center mt-2">{{message}}</h4>
+
+
+<div class="row">
     {% for product in products %}
-        <li class="list-group-item">
-            {{ product.title }}
-
-            <span class="text-success">${{product.price}}</span>
-        </li>
-</ul>
+       <div class="col-3 mt-5">
+        <div class="card h-100">
+            {% if product.image %}
+            <img src="{{product.image.url}}" alt="Imagen del producto" height="250">
+            {% endif %}
+            <div class="class-body">
+                <h5 class="card-title">{{product.title}}</h5>
+                <p class="card-text">{{product.description}}</p>
+                <a href="#" class="btn btn-primary">Ver Más</a>
+            </div>
+        </div>
+       </div>
     {% endfor %}
-{% endblock %}
 </div>
+
+
+</div>
+{% endblock %}
 {% load static %}
 
 
