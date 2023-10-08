@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% url 'products:product' %}
 
 {% block content %}
 
@@ -20,7 +21,7 @@
             <div class="class-body">
                 <h5 class="card-title">{{product.title}}</h5>
                 <p class="card-text">{{product.description}}</p>
-                <a href="#" class="btn btn-primary">Ver Más</a>
+                <a href="{% url 'products:product' product.slug %}" class="btn btn-primary">Ver Más</a>
             </div>
         </div>
        </div>
