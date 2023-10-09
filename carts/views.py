@@ -1,7 +1,8 @@
 from django.shortcuts import render
 
 from .utils import get_or_create_cart
-
+from django.shortcuts import redirect
+from django.shortcuts import get_object_or_404
 from .models import Cart
 from Tienda_online.models import Product
 
@@ -22,3 +23,11 @@ def add(request):
     return render(request, 'carts/add.html',{
         'product': product
     })
+
+def remove(request):
+    cart = get_or_create_cart(request)
+    product = get_object_or_404(Product, pk=request.POST.get('product_id'))
+    
+    cart.products.remove(product)
+
+    return redirect('carts:cart')

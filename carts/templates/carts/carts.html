@@ -25,6 +25,7 @@
     </th>
     <th>
         <a href="{% url 'products:product' product.slug %}">{{product.title}}</a>
+        {% include 'snippets/remove.html' %}
     </th>
     <th>1</th>
     <th>
