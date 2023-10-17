@@ -25,6 +25,13 @@ class Cart(models.Model):
         self.update_subtotal()
         self.update_total()
 
+        if self.order:
+            self.order.update_total()
+
+    @property
+    def order(self):
+        return self.order_set.first()
+
     def update_subtotal(self):
         self.subtotal = sum([product.price for product in self.products.all()])
         self.save()
@@ -40,7 +47,6 @@ def set_cart_id(sender, instance, *args, **kwargs):
 def update_totals(sender, instance, action,*args, **kwargs ):
     if action == 'post_add' or action =='post_remove' or action == 'post_clear':
         instance.update_totals()
-
 
 pre_save.connect(set_cart_id, sender=Cart)
 m2m_changed.connect(update_totals, sender=Cart.products.through)

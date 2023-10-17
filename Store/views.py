@@ -11,6 +11,8 @@ from django.contrib.auth.models import User
 
 from Tienda_online.models import Product
 
+from django.http import HttpResponseRedirect
+
 def holamundo(request):
 
     products = Product.objects.all().order_by('-id')
@@ -60,6 +62,10 @@ def registro(request):
         if user:
             login(request,user)
             messages.success(request,'Usuario creado existosamente')
+
+            if request.GET.get('next'):
+                 return HttpResponseRedirect(request.GET['next'])
+
             return redirect('home')
 
     return render(request, 'users/register.html',{

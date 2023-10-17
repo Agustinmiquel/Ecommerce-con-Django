@@ -1,0 +1,37 @@
+<div class="card">
+    <div class="card-body">
+        <div class="font-weight-bold">
+            Resumen del pedido
+        </div>
+        <div class="">
+            <table class="table table-borderless table-sm">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Productos:</td>
+                        <td>{{cart.total}}</td>
+                    </tr>
+                    <tr>
+                        <td>Envio:</td>
+                        <td>{{ order.shipping_total }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="">
+                <hr>
+                <div class="font-weight-bold text-danger">Total (IVA)</div>
+                <div class="d-inliene-block">
+                    {{order.total}}
+                </div>
+                <div class="mt-2">
+                    <a href="#" class="btn btn-warning">Confirmar Pedido</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

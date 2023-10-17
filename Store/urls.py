@@ -15,6 +15,7 @@ urlpatterns = [
     path('users/registro', views.registro, name='register'),
     path('productos/',include('Tienda_online.urls'), name='products'),
     path('carrito/', include('carts.urls'), name='carts'),
+    path('orden/', include('orders.urls'))
 ]
 
 if settings.DEBUG:
